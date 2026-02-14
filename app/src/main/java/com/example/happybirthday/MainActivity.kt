@@ -40,8 +40,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     GreetingImage(
-                        "Happy Birthday Sam!",
-                        from = "From Me"
+                        stringResource(R.string.happy_birthday_text),
+                        from = stringResource(R.string.signature_text)
                     )
                 }
             }
@@ -65,7 +65,7 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
             text = from,
             fontSize = 36.sp,
             modifier = Modifier
-                .padding(16.dp)
+                .padding(15.dp)
                 .align(alignment = Alignment.End)
         )
     }
