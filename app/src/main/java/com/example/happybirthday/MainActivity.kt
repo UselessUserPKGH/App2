@@ -114,59 +114,72 @@ fun BusinessCard(modifier: Modifier = Modifier) {
                 )
             }
 
-            Column(
+            Column(     // text
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 40.dp)
             ) {
-                ContactRow(
-                    icon = Icons.Default.Call,
-                    text = stringResource(R.string.phone_number),
-                    contentDescription = stringResource(R.string.phone_content_description)
-                )
-                ContactRow(
-                    icon = Icons.Default.Share,
-                    text = stringResource(R.string.social_media),
-                    contentDescription = stringResource(R.string.social_content_description)
-                )
-                ContactRow(
-                    icon = Icons.Default.Email,
-                    text = stringResource(R.string.email),
-                    contentDescription = stringResource(R.string.email_content_description)
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.End,
+                        verticalArrangement = Arrangement.spacedBy(12.dp),
+                        modifier = Modifier.padding(end = 12.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Call,
+                            contentDescription = stringResource(R.string.phone_content_description),
+                            modifier = Modifier.size(24.dp),
+                            tint = Color.Black
+                        )
+                        Icon(
+                            imageVector = Icons.Default.Share,
+                            contentDescription = stringResource(R.string.social_content_description),
+                            modifier = Modifier.size(24.dp),
+                            tint = Color.Black
+                        )
+                        Icon(
+                            imageVector = Icons.Default.Email,
+                            contentDescription = stringResource(R.string.email_content_description),
+                            modifier = Modifier.size(24.dp),
+                            tint = Color.Black
+                        )
+                    }
+
+                    Column(
+                        horizontalAlignment = Alignment.Start,
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.phone_number),
+                            fontSize = 16.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Start,
+                            fontWeight = FontWeight.Normal
+                        )
+                        Text(
+                            text = stringResource(R.string.social_media),
+                            fontSize = 16.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Start,
+                            fontWeight = FontWeight.Normal
+                        )
+                        Text(
+                            text = stringResource(R.string.email),
+                            fontSize = 16.sp,
+                            color = Color.Black,
+                            textAlign = TextAlign.Start,
+                            fontWeight = FontWeight.Normal
+                        )
+                    }
+                }
             }
         }
-    }
-}
-
-@Composable
-fun ContactRow(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    text: String,
-    contentDescription: String
-) {
-    Row(
-        modifier = Modifier
-            .padding(vertical = 4.dp),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = contentDescription,
-            modifier = Modifier.size(24.dp),
-            tint = Color.Black
-        )
-        Spacer(modifier = Modifier.width(12.dp))
-        Text(
-            text = text,
-            fontSize = 16.sp,
-            color = Color.Black,
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Normal
-        )
     }
 }
 
