@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -33,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
             CardTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color.White
                 ) {
                     BusinessCard()
                 }
@@ -114,73 +114,78 @@ fun BusinessCard(modifier: Modifier = Modifier) {
                 )
             }
 
-            Column(     // text
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 40.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column(
-                        horizontalAlignment = Alignment.End,
-                        verticalArrangement = Arrangement.spacedBy(12.dp),
-                        modifier = Modifier.padding(end = 12.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Call,
-                            contentDescription = stringResource(R.string.phone_content_description),
-                            modifier = Modifier.size(24.dp),
-                            tint = Color.Black
-                        )
-                        Icon(
-                            imageVector = Icons.Default.Share,
-                            contentDescription = stringResource(R.string.social_content_description),
-                            modifier = Modifier.size(24.dp),
-                            tint = Color.Black
-                        )
-                        Icon(
-                            imageVector = Icons.Default.Email,
-                            contentDescription = stringResource(R.string.email_content_description),
-                            modifier = Modifier.size(24.dp),
-                            tint = Color.Black
-                        )
-                    }
+            ContactInfoSection()
+        }
+    }
+}
 
-                    Column(
-                        horizontalAlignment = Alignment.Start,
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.phone_number),
-                            fontSize = 16.sp,
-                            color = Color.Black,
-                            textAlign = TextAlign.Start,
-                            fontWeight = FontWeight.Normal
-                        )
-                        Text(
-                            text = stringResource(R.string.social_media),
-                            fontSize = 16.sp,
-                            color = Color.Black,
-                            textAlign = TextAlign.Start,
-                            fontWeight = FontWeight.Normal
-                        )
-                        Text(
-                            text = stringResource(R.string.email),
-                            fontSize = 16.sp,
-                            color = Color.Black,
-                            textAlign = TextAlign.Start,
-                            fontWeight = FontWeight.Normal
-                        )
-                    }
-                }
+@Composable
+private fun ContactInfoSection() {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 40.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(
+                horizontalAlignment = Alignment.End,
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.padding(end = 12.dp)
+            ) {
+                ContactIcon(
+                    imageVector = Icons.Default.Call,
+                    contentDescriptionRes = R.string.phone_content_description
+                )
+                ContactIcon(
+                    imageVector = Icons.Default.Share,
+                    contentDescriptionRes = R.string.social_content_description
+                )
+                ContactIcon(
+                    imageVector = Icons.Default.Email,
+                    contentDescriptionRes = R.string.email_content_description
+                )
+            }
+
+            Column(
+                horizontalAlignment = Alignment.Start,
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                ContactText(textRes = R.string.phone_number)
+                ContactText(textRes = R.string.social_media)
+                ContactText(textRes = R.string.email)
             }
         }
     }
+}
+
+@Composable
+private fun ContactIcon(
+    imageVector: ImageVector,
+    contentDescriptionRes: Int
+) {
+    Icon(
+        imageVector = imageVector,
+        contentDescription = stringResource(contentDescriptionRes),
+        modifier = Modifier.size(24.dp),
+        tint = Color.Black
+    )
+}
+
+@Composable
+private fun ContactText(textRes: Int) {
+    Text(
+        text = stringResource(textRes),
+        fontSize = 16.sp,
+        color = Color.Black,
+        textAlign = TextAlign.Start,
+        fontWeight = FontWeight.Normal
+    )
 }
 
 @Preview(showBackground = true)
