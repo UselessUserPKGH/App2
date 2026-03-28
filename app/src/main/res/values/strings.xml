@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">Happy Birthday</string>
-    <string name="happy_birthday_text">Happy Birthday Sam!</string>
-    <string name="signature_text">From Me</string>
+    <string name="app_name">Card</string>
+    <string name="full_name">Максим Бессмертный</string>
+    <string name="title">Разработчик ПО / Системный программист</string>
+    <string name="phone_number">+7 (999) 123-45-67</string>
+    <string name="social_media">\@max_bessmertny</string>
+    <string name="email">max.bessmertny@example.com</string>
+    <string name="photo_description">Фото профиля</string>
+    <string name="phone_content_description">Телефон</string>
+    <string name="social_content_description">Социальная сеть</string>
+    <string name="email_content_description">Электронная почта</string>
 </resources>
